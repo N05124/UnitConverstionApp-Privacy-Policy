@@ -2,7 +2,7 @@
 //  square.swift
 //  OB_Quantification
 //
-//  Created by Arison on 11/26/25.
+//  Shared Double helpers for Area/Volume (not a UnitCategory).
 //
 
 import Foundation
