@@ -6,15 +6,10 @@
 //
 
 import Foundation
-//
-//  Saturation.swift
-//  OB_Quantification
-//
-//  Created by Arison on 11/28/25.
-//
 
-import Foundation
-
+/// Saturation / relative composition as percent or fraction.
+/// Concentration units (mol/L) belong under Chemical — they are not convertible
+/// to percent without a reference saturation concentration.
 struct Saturation: UnitCategory {
     var name: String
     let currentPage = "Saturation"
@@ -26,33 +21,21 @@ struct Saturation: UnitCategory {
         "Percent", "Fraction"
     ]
 
-    let imperial: [String] = [
-        
-    ]
+    let imperial: [String] = []
 
-    let scientific = [
-        "MolPerLiter", "MillimolPerLiter"
-    ]
+    let scientific: [String] = []
 
-    let nautical: [String] = [
-        
-    ]
+    let nautical: [String] = []
 
     // MARK: - Main Conversion Router
     func convertedValues(value: Double, from unit: String) -> [String:[String: Double]] {
         if metric.contains(unit) {
             return convertFromMetric(value, unit: unit)
-        } else if imperial.contains(unit) {
-            return convertFromImperial(value, unit: unit)
-        } else if scientific.contains(unit) {
-            return convertFromScientific(value, unit: unit)
-        } else if nautical.contains(unit) {
-            return convertFromNautical(value, unit: unit)
         }
         return [:]
     }
 
-    // MARK: - Conversion Helpers
+    // MARK: - Conversion Helpers (base = percent)
     private func convertFromMetric(_ value: Double, unit: String) -> [String:[String: Double]] {
         let toPercent: Double
         switch unit {
@@ -61,56 +44,16 @@ struct Saturation: UnitCategory {
         default: toPercent = value
         }
 
-        var result = mergeMetricValues(toPercent)
-        result.merge(mergeImperialValues(toPercent)) { c,_ in c }
-        result.merge(mergeScientificValues(toPercent)) { c,_ in c }
-        result.merge(mergeNauticalValues(toPercent)) { c,_ in c }
-        return result
-    }
-
-    private func convertFromImperial(_ value: Double, unit: String) -> [String:[String: Double]] {
-        return [:] // No imperial units defined
-    }
-
-    private func convertFromScientific(_ value: Double, unit: String) -> [String:[String: Double]] {
-        let toPercent: Double
-        switch unit {
-        case "MolPerLiter": toPercent = value * 1000 // Example conversion logic
-        case "MillimolPerLiter": toPercent = value // Example conversion logic
-        default: toPercent = value
-        }
-
-        var result = mergeScientificValues(toPercent)
-        result.merge(mergeMetricValues(toPercent)) { c,_ in c }
-        result.merge(mergeImperialValues(toPercent)) { c,_ in c }
-        result.merge(mergeNauticalValues(toPercent)) { c,_ in c }
-        return result
-    }
-
-    private func convertFromNautical(_ value: Double, unit: String) -> [String:[String: Double]] {
-        return [:]
+        return mergeMetricValues(toPercent)
     }
 
     // MARK: - Merge Groups
     private func mergeMetricValues(_ value: Double) -> [String:[String: Double]] {
-        return ["Metric": [
-            "Percent": value,
-            "Fraction": value / 100
-        ]]
-    }
-
-    private func mergeImperialValues(_ value: Double) -> [String:[String: Double]] {
-        return [:]
-    }
-
-    private func mergeScientificValues(_ value: Double) -> [String:[String: Double]] {
-        return ["Scientific": [
-            "MolPerLiter": value / 1000,
-            "MillimolPerLiter": value
-        ]]
-    }
-
-    private func mergeNauticalValues(_ value: Double) -> [String:[String: Double]] {
-        return [:]
+        [
+            "Metric": [
+                "Percent": value,
+                "Fraction": value / 100
+            ]
+        ]
     }
 }

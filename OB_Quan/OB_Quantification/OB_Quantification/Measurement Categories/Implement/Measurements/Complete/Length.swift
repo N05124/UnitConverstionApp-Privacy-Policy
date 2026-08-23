@@ -98,7 +98,7 @@ struct Length: UnitCategory {
         
         //normalize values for conversion
         let toMeters = toInches * 0.0254 // inch >> meter
-        let toNautical = toMeters
+        let toNautical = toInches // mergeNauticalValues expects inches
         let toScientific = toMeters // sci. notation
         
         // create mergeable dictionary
@@ -121,7 +121,9 @@ struct Length: UnitCategory {
         case "Foot": toInches = value * 12
         case "Yard": toInches = value * 36
         case "Fathom": toInches = value * 72
-        case "Cable": toInches = value * 6076.1
+        // 1 international cable = 1/10 nautical mile = 185.2 m = 7291.34 in
+        // (not 6076.1, which is feet per nautical mile)
+        case "Cable": toInches = value * 7291.34
         case "NauticalMile": toInches = value * 72913.4
         default: toInches = value
         }
@@ -166,7 +168,6 @@ struct Length: UnitCategory {
         case "Kiloparsec": toMeters = value * 3.086e19
         case "Megaparsec": toMeters = value * 3.086e22
         case "Gigaparsec": toMeters = value * 3.086e25
-        case "Lightyear": toMeters = value * 9.461e15
         default: toMeters = value
         }
         //normalize values for conversion
@@ -194,7 +195,8 @@ struct Length: UnitCategory {
             "Foot": value / 12.0,
             "Yard": value / 36.0,
             "Fathom": value / 72.0,
-            "Cable": value / 6076.1,
+            // 1 international cable = 1/10 nmi = 185.2 m = 7291.34 in
+            "Cable": value / 7291.34,
             "NauticalMile": value / 72913.4
         ]
         return dict
@@ -255,8 +257,7 @@ struct Length: UnitCategory {
             "Parsec": value / 3.086e16,
             "Kiloparsec": value / 3.086e19,
             "Megaparsec": value / 3.086e22,
-            "Gigaparsec": value / 3.086e25,
-            "Lightyear": value / 9.461e15
+            "Gigaparsec": value / 3.086e25
         ]
         return dict
     }

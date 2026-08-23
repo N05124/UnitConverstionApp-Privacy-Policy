@@ -40,6 +40,21 @@ struct TabItem: Identifiable{
         TabItem(id: UUID(), title: "Energy", systemImage: "diamond", currentPage: "Energy", status: "In Progress", isExportable: true, category: Energy(name: "Joule")),
 //        Force
         TabItem(id: UUID(), title: "Force", systemImage: "dial.high", currentPage: "Force", status: "In Progress", isExportable: true, category: Force(name: "Newtons")),
+//        Power
+        TabItem(id: UUID(), title: "Power", systemImage: "bolt.circle", currentPage: "Power", status: "Active", isExportable: true, category: Power(name: "Watt")),
+//        Illumination
+        TabItem(id: UUID(), title: "Illumination", systemImage: "light.max", currentPage: "Illumination", status: "Active", isExportable: true, category: Illumination(name: "Lux")),
+//        Saturation
+        TabItem(id: UUID(), title: "Saturation", systemImage: "drop.degreesign", currentPage: "Saturation", status: "Active", isExportable: true, category: Saturation(name: "Percent")),
+//        Pressure
+        TabItem(id: UUID(), title: "Pressure", systemImage: "barometer", currentPage: "Pressure", status: "Active", isExportable: true, category: Pressure(name: "Pascal")),
+//        Temporal
+        TabItem(id: UUID(), title: "Time", systemImage: "clock", currentPage: "Time", status: "Active", isExportable: true, category: Temporal(name: "Second")),
+//        Speed
+        TabItem(id: UUID(), title: "Speed", systemImage: "gauge.with.dots.needle.67percent", currentPage: "Speed", status: "Active", isExportable: true, category: Speed(name: "MeterPerSecond")),
+//        Torque
+        TabItem(id: UUID(), title: "Torque", systemImage: "arrow.triangle.2.circlepath", currentPage: "Torque", status: "Active", isExportable: true, category: Torque(name: "NewtonMeter")),
+//        Frequency
+        TabItem(id: UUID(), title: "Frequency", systemImage: "waveform.path", currentPage: "Frequency", status: "Active", isExportable: true, category: Frequency(name: "Hertz")),
     ]
 }
-

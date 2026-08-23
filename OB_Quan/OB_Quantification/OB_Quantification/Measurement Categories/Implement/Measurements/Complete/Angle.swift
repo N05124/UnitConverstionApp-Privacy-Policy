@@ -112,15 +112,16 @@ struct Angle: UnitCategory {
     }
 
     private func convertFromMathematical(_ value: Double, unit: String) -> [String:[String: Double]] {
+        // Treat mathematical labels as multiples of the named angle (value * π/n)
         let toRad: Double
         switch unit {
-        case "PiOver6": toRad = .pi / 6
-        case "PiOver4": toRad = .pi / 4
-        case "PiOver3": toRad = .pi / 3
-        case "PiOver2": toRad = .pi / 2
-        case "Pi": toRad = .pi
-        case "ThreePiOver2": toRad = 3 * .pi / 2
-        case "TwoPi": toRad = 2 * .pi
+        case "PiOver6": toRad = value * (.pi / 6)
+        case "PiOver4": toRad = value * (.pi / 4)
+        case "PiOver3": toRad = value * (.pi / 3)
+        case "PiOver2": toRad = value * (.pi / 2)
+        case "Pi": toRad = value * .pi
+        case "ThreePiOver2": toRad = value * (3 * .pi / 2)
+        case "TwoPi": toRad = value * (2 * .pi)
         default: toRad = value
         }
         var result = mergeMathematicalValues(toRad)

@@ -97,10 +97,12 @@ struct Electricity: UnitCategory {
     private func convertFromImperial(_ value: Double, unit: String) -> [String:[String: Double]] {
         var baseValue: Double
         switch unit {
-        case "Statampere": baseValue = value * 3.33564e-10
-        case "Abampere": baseValue = value * 10
-        case "Abvolt": baseValue = value * 1e-8
-        case "Abohm": baseValue = value * 1e-9
+        case "Statampere": baseValue = value * 3.33564e-10 // esu current → A
+        case "Abampere": baseValue = value * 10 // emu current → A
+        case "Abvolt": baseValue = value * 1e-8 // emu voltage → V
+        case "Abohm": baseValue = value * 1e-9 // emu resistance → Ω
+        case "EMUOfCapacitance": baseValue = value * 1e9 // abfarad → F
+        case "EMUOfInductance": baseValue = value * 1e-9 // abhenry → H
         default: baseValue = value
         }
 
@@ -166,7 +168,9 @@ struct Electricity: UnitCategory {
             "Statampere": value / 3.33564e-10,
             "Abampere": value / 10,
             "Abvolt": value / 1e-8,
-            "Abohm": value / 1e-9
+            "Abohm": value / 1e-9,
+            "EMUOfCapacitance": value / 1e9,
+            "EMUOfInductance": value / 1e-9
         ]]
     }
 
