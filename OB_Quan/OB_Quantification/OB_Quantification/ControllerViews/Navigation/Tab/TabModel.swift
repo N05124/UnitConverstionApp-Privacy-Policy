@@ -142,5 +142,21 @@ struct TabItem: Identifiable{
         TabItem(id: UUID(), title: "Information Entropy", systemImage: "info.circle", currentPage: "Information Entropy", status: "Active", isExportable: true, category: InformationEntropy(name: "Bit")),
 //        BaudRate
         TabItem(id: UUID(), title: "Baud Rate", systemImage: "antenna.radiowaves.left.and.right", currentPage: "Baud Rate", status: "Active", isExportable: true, category: BaudRate(name: "Baud")),
+//        HeartRate
+        TabItem(id: UUID(), title: "Heart Rate", systemImage: "heart.fill", currentPage: "Heart Rate", status: "Active", isExportable: true, category: HeartRate(name: "BeatsPerMinute")),
+//        MetabolicRate
+        TabItem(id: UUID(), title: "Metabolic Rate", systemImage: "flame", currentPage: "Metabolic Rate", status: "Active", isExportable: true, category: MetabolicRate(name: "CaloriesPerMinute")),
+//        VO2Max
+        TabItem(id: UUID(), title: "VO2 Max", systemImage: "lungs", currentPage: "VO2 Max", status: "Active", isExportable: true, category: VO2Max(name: "MillilitersPerKilogramPerMinute")),
+//        LumberVolume
+        TabItem(id: UUID(), title: "Lumber Volume", systemImage: "square.stack.3d.up", currentPage: "Lumber Volume", status: "Active", isExportable: true, category: LumberVolume(name: "BoardFoot")),
+//        MaterialCoverage
+        TabItem(id: UUID(), title: "Material Coverage", systemImage: "paintbrush", currentPage: "Material Coverage", status: "Active", isExportable: true, category: MaterialCoverage(name: "SquareMeterPerLiter")),
+//        EngineDisplacement
+        TabItem(id: UUID(), title: "Engine Displacement", systemImage: "engine.combustion", currentPage: "Engine Displacement", status: "Active", isExportable: true, category: EngineDisplacement(name: "Liter")),
+//        ImageResolution
+        TabItem(id: UUID(), title: "Image Resolution", systemImage: "camera", currentPage: "Image Resolution", status: "Active", isExportable: true, category: ImageResolution(name: "Megapixel")),
+//        GrowingDegreeDays
+        TabItem(id: UUID(), title: "Growing Degree Days", systemImage: "leaf", currentPage: "Growing Degree Days", status: "Active", isExportable: true, category: GrowingDegreeDays(name: "GrowingDegreeDayCelsius")),
     ]
 }
