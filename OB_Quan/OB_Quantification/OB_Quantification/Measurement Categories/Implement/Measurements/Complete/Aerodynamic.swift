@@ -35,7 +35,7 @@ struct Aerodynamic: UnitCategory {
     // TODO: not a convertible unit without freestream/context data:
     // pressure coefficient Cp, lift/drag coefficients, flutter frequency.
 
-    private let speedOfSoundISA = 343.0 // m/s, dry air ~20 °C
+    private static let speedOfSoundISA = 343.0 // m/s, dry air ~20 °C
 
     func convertedValues(value: Double, from unit: String) -> [String:[String: Double]] {
         if metric.contains(unit) || imperial.contains(unit) {
@@ -72,14 +72,14 @@ struct Aerodynamic: UnitCategory {
         switch unit {
         case "MeterPerSecond": mps = value
         case "Knot": mps = value * 0.514444
-        case "Mach": mps = value * speedOfSoundISA
+        case "Mach": mps = value * Self.speedOfSoundISA
         default: mps = value
         }
         return [
             "Scientific": [
                 "MeterPerSecond": mps,
                 "Knot": mps / 0.514444,
-                "Mach": mps / speedOfSoundISA
+                "Mach": mps / Self.speedOfSoundISA
             ],
             "Nautical": [
                 "Knot": mps / 0.514444

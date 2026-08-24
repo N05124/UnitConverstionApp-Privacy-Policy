@@ -26,7 +26,7 @@ struct Matter: UnitCategory {
     let nautical: [String] = []
 
     // Avogadro constant (CODATA 2019 exact)
-    private let avogadro = 6.02214076e23
+    private static let avogadro = 6.02214076e23
 
     // TODO: not a convertible unit — requires reference calibration data:
     // crystal structure / lattice constants without specified lattice,
@@ -59,7 +59,7 @@ struct Matter: UnitCategory {
         let moles: Double
         switch unit {
         case "Mole": moles = value
-        case "ParticleCount": moles = value / avogadro
+        case "ParticleCount": moles = value / Self.avogadro
         default: moles = value
         }
         var result = mergeScientificValues(moles)
@@ -82,7 +82,7 @@ struct Matter: UnitCategory {
         [
             "Scientific": [
                 "Mole": moles,
-                "ParticleCount": moles * avogadro
+                "ParticleCount": moles * Self.avogadro
             ]
         ]
     }

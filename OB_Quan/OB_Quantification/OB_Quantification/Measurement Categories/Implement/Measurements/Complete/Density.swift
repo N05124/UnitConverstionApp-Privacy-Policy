@@ -6,14 +6,6 @@
 //
 
 import Foundation
-//
-//  Density.swift
-//  OB_Quantification
-//
-//  Created by Arison on 11/28/25.
-//
-
-import Foundation
 
 struct Density: UnitCategory {
     var name: String

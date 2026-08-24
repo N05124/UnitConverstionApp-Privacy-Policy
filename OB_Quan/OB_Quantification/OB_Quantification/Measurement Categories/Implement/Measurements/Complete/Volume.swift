@@ -28,10 +28,10 @@ struct Volume: UnitCategory {
         "Inch³", "Foot³", "Yard³", "Fathom³", "Cable³", "NauticalMile³"
     ]
 
-    private let inchPerMeter = 1.0 / 0.0254
+    private static let inchPerMeter = 1.0 / 0.0254
     // 1 international cable = 1/10 nmi = 185.2 m = 7291.34 in
-    private let cableInches = 7291.34
-    private let nauticalMileInches = 72913.4
+    private static let cableInches = 7291.34
+    private static let nauticalMileInches = 72913.4
 
     // MARK: - Dynamic Conversion Logic
     func convertedValues(value: Double, from unit: String) -> [String:[String: Double]] {
@@ -67,7 +67,7 @@ struct Volume: UnitCategory {
         case "Yottameter³": toCubicMeters = value * 1e72
         default: toCubicMeters = value
         }
-        let toCubicInches = toCubicMeters * inchPerMeter * inchPerMeter * inchPerMeter
+        let toCubicInches = toCubicMeters * Self.inchPerMeter * Self.inchPerMeter * Self.inchPerMeter
 
         var result = mergeMetricValues(toCubicMeters)
         result.merge(mergeImperialValues(toCubicInches)) { current, _ in current }
@@ -105,8 +105,8 @@ struct Volume: UnitCategory {
         case "Foot³": toCubicInches = value * (12.0 * 12.0 * 12.0)
         case "Yard³": toCubicInches = value * (36.0 * 36.0 * 36.0)
         case "Fathom³": toCubicInches = value * (72.0 * 72.0 * 72.0)
-        case "Cable³": toCubicInches = value * (cableInches * cableInches * cableInches)
-        case "NauticalMile³": toCubicInches = value * (nauticalMileInches * nauticalMileInches * nauticalMileInches)
+        case "Cable³": toCubicInches = value * (Self.cableInches * Self.cableInches * Self.cableInches)
+        case "NauticalMile³": toCubicInches = value * (Self.nauticalMileInches * Self.nauticalMileInches * Self.nauticalMileInches)
         default: toCubicInches = value
         }
         let inch = 0.0254
@@ -143,7 +143,7 @@ struct Volume: UnitCategory {
         case "Gigaparsec³": toCubicMeters = value * pow(3.086e25, 3)
         default: toCubicMeters = value
         }
-        let toCubicInches = toCubicMeters * inchPerMeter * inchPerMeter * inchPerMeter
+        let toCubicInches = toCubicMeters * Self.inchPerMeter * Self.inchPerMeter * Self.inchPerMeter
 
         var result = mergeScientificValues(toCubicMeters)
         result.merge(mergeImperialValues(toCubicInches)) { current, _ in current }
@@ -194,8 +194,8 @@ struct Volume: UnitCategory {
                 "Foot³": cubicInches / (12.0 * 12.0 * 12.0),
                 "Yard³": cubicInches / (36.0 * 36.0 * 36.0),
                 "Fathom³": cubicInches / (72.0 * 72.0 * 72.0),
-                "Cable³": cubicInches / (cableInches * cableInches * cableInches),
-                "NauticalMile³": cubicInches / (nauticalMileInches * nauticalMileInches * nauticalMileInches)
+                "Cable³": cubicInches / (Self.cableInches * Self.cableInches * Self.cableInches),
+                "NauticalMile³": cubicInches / (Self.nauticalMileInches * Self.nauticalMileInches * Self.nauticalMileInches)
             ]
         ]
     }

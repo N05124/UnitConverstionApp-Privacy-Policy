@@ -2,8 +2,25 @@
 //  Measurementsd Dictionary.swift
 //  OB_Quantification
 //
-//  Living checklist of measurement category coverage.
-//  Do not delete this file — update status as categories ship.
+//  Living checklist of measurement-category coverage for the OB_Quantification app.
+//
+//  STATE (verification pass):
+//  - Fully implemented & registered (convertible SI/customary units):
+//      Length, Volume, Area, Weight, Liquid, Angle, Acceleration, Density,
+//      Electricity, Energy, Force, Power, Illumination, Saturation, Pressure,
+//      Time (Temporal), Speed, Torque, Frequency,
+//      Acoustic, Thermodynamic, Electromagnetic, Chemical, Hydrodynamic,
+//      Matter, Environmental, Aerodynamic, Biological, Perceptual
+//  - Intentionally skipped as standalone categories (de-duplicated):
+//      Spatial → Length/Area/Volume/Angle
+//      Energy / Motion → Force/Energy/Speed/Acceleration/Torque/Power/Weight
+//  - Intentionally skipped (needs external calibration / not a unit conversion):
+//      Other / Additional metrics (ROI, AQI composites, Cp/Cpk, NDVI, HDI,
+//      PSNR/SSIM, MTBF context scores, etc.)
+//  - TODO'd inline inside specific category files (not in unit arrays):
+//      STI/MOS/Clarity (Acoustic), IC50/CFU/OD (Biological), hardness/octane
+//      (Chemical), Re/Fr/Cd (Hydrodynamic), Cp/flutter (Aerodynamic),
+//      AQI (Environmental), Likert/sones/perplexity (Perceptual), etc.
 //
 
 import Foundation
@@ -83,22 +100,3 @@ import Foundation
    //   economic/ROI, TLV/PEL, Cp/Cpk, NDVI, HDI/CPI, PSNR/SSIM composites,
    //   MTBF context-specific reliability scores
 */
-
-// Retained as a commented reference snapshot of the original brainstorm dictionary.
-// Categories above supersede this block for implementation status.
-//let measurements: [String: [String: [String: String]]] = [
-//    "Acoustic": [ /* see Acoustic.swift */ ],
-//    "Biological": [ /* see Biological.swift */ ],
-//    "Chemical / Material": [ /* see Chemical.swift */ ],
-//    "Electromagnetic": [ /* see Electromagnetic.swift */ ],
-//    "Energy / Motion": [ /* de-duped → Force/Energy/Speed/… */ ],
-//    "Environmental": [ /* see Environmental.swift */ ],
-//    "Matter": [ /* see Matter.swift */ ],
-//    "Perceptual / Informational": [ /* see Perceptual.swift */ ],
-//    "Spatial": [ /* de-duped → Length/Area/Volume/Angle */ ],
-//    "Temporal": [ /* see Temporal.swift */ ],
-//    "Thermodynamic": [ /* see Thermodynamic.swift */ ],
-//    "Hydrodynamic": [ /* see Hydrodynamic.swift */ ],
-//    "Aerodynamic": [ /* see Aerodynamic.swift */ ],
-//    "Other / Additional metrics": [ /* TODO — non-convertible composites */ ]
-//]

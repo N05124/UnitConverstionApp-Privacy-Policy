@@ -31,7 +31,7 @@ struct Acoustic: UnitCategory {
     // requires reference calibration data: Speech Transmission Index (STI),
     // Mean Opinion Score, Clarity C50/C80, reverberation metrics beyond time.
 
-    private let p0 = 20e-6 // Pa reference for dB SPL
+    private static let p0 = 20e-6 // Pa reference for dB SPL
 
     func convertedValues(value: Double, from unit: String) -> [String:[String: Double]] {
         if metric.contains(unit) {
@@ -59,8 +59,8 @@ struct Acoustic: UnitCategory {
         let toPascal: Double
         switch unit {
         case "DecibelSPL":
-            // p = p0 · 10^(L/20)
-            toPascal = p0 * pow(10.0, value / 20.0)
+            // p = p0 · 10^(L/20) with p0 = 20 µPa
+            toPascal = Self.p0 * pow(10.0, value / 20.0)
         default:
             toPascal = value
         }
@@ -82,7 +82,7 @@ struct Acoustic: UnitCategory {
     private func mergeScientificValues(_ pascals: Double) -> [String:[String: Double]] {
         let db: Double
         if pascals > 0 {
-            db = 20.0 * log10(pascals / p0)
+            db = 20.0 * log10(pascals / Self.p0)
         } else {
             db = -Double.infinity
         }

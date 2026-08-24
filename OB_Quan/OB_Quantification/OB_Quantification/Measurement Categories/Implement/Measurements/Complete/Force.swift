@@ -59,12 +59,12 @@ struct Force: UnitCategory {
         case "Hectonewton": toNewton = value * 100
         case "Kilonewton": toNewton = value * 1_000
         case "Meganewton": toNewton = value * 1_000_000
-        case "Giganewton": toNewton = value * 1_000_000_000
-        case "Teranewton": toNewton = value * 1_000_000_000_000
-        case "Petanewton": toNewton = value * 1_000_000_000_000_000
-        case "ExameterNewton": toNewton = value * 1_000_000_000_000_000_000
-        case "Zettanewton": toNewton = value * 1_000_000_000_000_000_000_000
-        case "Yottanewton": toNewton = value * 1_000_000_000_000_000_000_000_000
+        case "Giganewton": toNewton = value * 1e9
+        case "Teranewton": toNewton = value * 1e12
+        case "Petanewton": toNewton = value * 1e15
+        case "ExameterNewton": toNewton = value * 1e18
+        case "Zettanewton": toNewton = value * 1e21
+        case "Yottanewton": toNewton = value * 1e24
         default: toNewton = value
         }
 
@@ -141,12 +141,12 @@ struct Force: UnitCategory {
             "Hectonewton": value / 100,
             "Kilonewton": value / 1_000,
             "Meganewton": value / 1_000_000,
-            "Giganewton": value / 1_000_000_000,
-            "Teranewton": value / 1_000_000_000_000,
-            "Petanewton": value / 1_000_000_000_000_000,
-            "ExameterNewton": value / 1_000_000_000_000_000_000,
-            "Zettanewton": value / 1_000_000_000_000_000_000_000,
-            "Yottanewton": value / 1_000_000_000_000_000_000_000_000
+            "Giganewton": value / 1e9,
+            "Teranewton": value / 1e12,
+            "Petanewton": value / 1e15,
+            "ExameterNewton": value / 1e18,
+            "Zettanewton": value / 1e21,
+            "Yottanewton": value / 1e24
         ]]
     }
 

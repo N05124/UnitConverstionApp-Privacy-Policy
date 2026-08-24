@@ -36,10 +36,10 @@ struct Area: UnitCategory {
     ]
 
     // Linear inch factors used for area via factor²
-    private let inchPerMeter = 1.0 / 0.0254
+    private static let inchPerMeter = 1.0 / 0.0254
     // 1 international cable = 1/10 nmi = 185.2 m = 7291.34 in
-    private let cableInches = 7291.34
-    private let nauticalMileInches = 72913.4
+    private static let cableInches = 7291.34
+    private static let nauticalMileInches = 72913.4
 
     // MARK: - Dynamic Conversion Logic
     func convertedValues(value: Double, from unit: String) -> [String:[String: Double]] {
@@ -75,7 +75,7 @@ struct Area: UnitCategory {
         case "Yottameter²": toSquareMeters = value * 1e48
         default: toSquareMeters = value
         }
-        let toSquareInches = toSquareMeters * inchPerMeter * inchPerMeter
+        let toSquareInches = toSquareMeters * Self.inchPerMeter * Self.inchPerMeter
 
         var result = mergeMetricValues(toSquareMeters)
         result.merge(mergeImperialValues(toSquareInches)) { current, _ in current }
@@ -112,8 +112,8 @@ struct Area: UnitCategory {
         case "Foot²": toSquareInches = value * 144.0
         case "Yard²": toSquareInches = value * 1296.0
         case "Fathom²": toSquareInches = value * (72.0 * 72.0)
-        case "Cable²": toSquareInches = value * (cableInches * cableInches)
-        case "NauticalMile²": toSquareInches = value * (nauticalMileInches * nauticalMileInches)
+        case "Cable²": toSquareInches = value * (Self.cableInches * Self.cableInches)
+        case "NauticalMile²": toSquareInches = value * (Self.nauticalMileInches * Self.nauticalMileInches)
         default: toSquareInches = value
         }
         let toSquareMeters = toSquareInches * 0.0254 * 0.0254
@@ -149,7 +149,7 @@ struct Area: UnitCategory {
         case "Gigaparsec²": toSquareMeters = value * (3.086e25 * 3.086e25)
         default: toSquareMeters = value
         }
-        let toSquareInches = toSquareMeters * inchPerMeter * inchPerMeter
+        let toSquareInches = toSquareMeters * Self.inchPerMeter * Self.inchPerMeter
 
         var result = mergeScientificValues(toSquareMeters)
         result.merge(mergeImperialValues(toSquareInches)) { current, _ in current }
@@ -166,8 +166,8 @@ struct Area: UnitCategory {
                 "Foot²": squareInches / 144.0,
                 "Yard²": squareInches / 1296.0,
                 "Fathom²": squareInches / (72.0 * 72.0),
-                "Cable²": squareInches / (cableInches * cableInches),
-                "NauticalMile²": squareInches / (nauticalMileInches * nauticalMileInches)
+                "Cable²": squareInches / (Self.cableInches * Self.cableInches),
+                "NauticalMile²": squareInches / (Self.nauticalMileInches * Self.nauticalMileInches)
             ]
         ]
     }

@@ -53,7 +53,7 @@ struct Environmental: UnitCategory {
         case "Inch": meters = value * 0.0254
         default: meters = value
         }
-        var result: [String:[String: Double]] = [
+        let result: [String:[String: Double]] = [
             "Metric": [
                 "Millimeter": meters * 1000.0,
                 "Centimeter": meters * 100.0,
