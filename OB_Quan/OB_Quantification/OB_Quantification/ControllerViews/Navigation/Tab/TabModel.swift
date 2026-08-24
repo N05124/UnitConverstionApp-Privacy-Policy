@@ -40,6 +40,41 @@ struct TabItem: Identifiable{
         TabItem(id: UUID(), title: "Energy", systemImage: "diamond", currentPage: "Energy", status: "In Progress", isExportable: true, category: Energy(name: "Joule")),
 //        Force
         TabItem(id: UUID(), title: "Force", systemImage: "dial.high", currentPage: "Force", status: "In Progress", isExportable: true, category: Force(name: "Newtons")),
+//        Power
+        TabItem(id: UUID(), title: "Power", systemImage: "bolt.circle", currentPage: "Power", status: "Active", isExportable: true, category: Power(name: "Watt")),
+//        Illumination
+        TabItem(id: UUID(), title: "Illumination", systemImage: "sun.max", currentPage: "Illumination", status: "Active", isExportable: true, category: Illumination(name: "Lux")),
+//        Saturation
+        TabItem(id: UUID(), title: "Saturation", systemImage: "percent", currentPage: "Saturation", status: "Active", isExportable: true, category: Saturation(name: "Percent")),
+//        Pressure
+        TabItem(id: UUID(), title: "Pressure", systemImage: "barometer", currentPage: "Pressure", status: "Active", isExportable: true, category: Pressure(name: "Pascal")),
+//        Temporal
+        TabItem(id: UUID(), title: "Time", systemImage: "clock", currentPage: "Time", status: "Active", isExportable: true, category: Temporal(name: "Second")),
+//        Speed
+        TabItem(id: UUID(), title: "Speed", systemImage: "gauge", currentPage: "Speed", status: "Active", isExportable: true, category: Speed(name: "MeterPerSecond")),
+//        Torque
+        TabItem(id: UUID(), title: "Torque", systemImage: "arrow.2.circlepath", currentPage: "Torque", status: "Active", isExportable: true, category: Torque(name: "NewtonMeter")),
+//        Frequency
+        TabItem(id: UUID(), title: "Frequency", systemImage: "waveform.path", currentPage: "Frequency", status: "Active", isExportable: true, category: Frequency(name: "Hertz")),
+//        Acoustic
+        TabItem(id: UUID(), title: "Acoustic", systemImage: "ear", currentPage: "Acoustic", status: "In Progress", isExportable: true, category: Acoustic(name: "Pascal")),
+//        Thermodynamic
+        TabItem(id: UUID(), title: "Thermodynamic", systemImage: "thermometer", currentPage: "Thermodynamic", status: "In Progress", isExportable: true, category: Thermodynamic(name: "Kelvin")),
+//        Electromagnetic
+        TabItem(id: UUID(), title: "Electromagnetic", systemImage: "dot.radiowaves.left.and.right", currentPage: "Electromagnetic", status: "In Progress", isExportable: true, category: Electromagnetic(name: "Tesla")),
+//        Chemical
+        TabItem(id: UUID(), title: "Chemical", systemImage: "testtube.2", currentPage: "Chemical", status: "In Progress", isExportable: true, category: Chemical(name: "PascalSecond")),
+//        Hydrodynamic
+        TabItem(id: UUID(), title: "Hydrodynamic", systemImage: "wind", currentPage: "Hydrodynamic", status: "In Progress", isExportable: true, category: Hydrodynamic(name: "LiterPerSecond")),
+//        Matter
+        TabItem(id: UUID(), title: "Matter", systemImage: "circle.hexagongrid", currentPage: "Matter", status: "In Progress", isExportable: true, category: Matter(name: "Mole")),
+//        Environmental
+        TabItem(id: UUID(), title: "Environmental", systemImage: "cloud.rain", currentPage: "Environmental", status: "In Progress", isExportable: true, category: Environmental(name: "Millimeter")),
+//        Aerodynamic
+        TabItem(id: UUID(), title: "Aerodynamic", systemImage: "airplane", currentPage: "Aerodynamic", status: "In Progress", isExportable: true, category: Aerodynamic(name: "Pascal")),
+//        Biological
+        TabItem(id: UUID(), title: "Biological", systemImage: "heart", currentPage: "Biological", status: "In Progress", isExportable: true, category: Biological(name: "BeatsPerMinute")),
+//        Perceptual
+        TabItem(id: UUID(), title: "Perceptual", systemImage: "eye", currentPage: "Perceptual", status: "In Progress", isExportable: true, category: Perceptual(name: "BitPerSecond")),
     ]
 }
-

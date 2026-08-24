@@ -6,14 +6,6 @@
 //
 
 import Foundation
-//
-//  Illumination.swift
-//  OB_Quantification
-//
-//  Created by Arison on 11/28/25.
-//
-
-import Foundation
 
 struct Illumination: UnitCategory {
     var name: String
@@ -31,12 +23,10 @@ struct Illumination: UnitCategory {
     ]
 
     let scientific = [
-        "Phot"
+        "Phot" // 1 phot = 10_000 lux (CGS)
     ]
 
-    let nautical: [String] = [
-        
-    ]
+    let nautical: [String] = []
 
     // MARK: - Main Conversion Router
     func convertedValues(value: Double, from unit: String) -> [String:[String: Double]] {
@@ -46,38 +36,29 @@ struct Illumination: UnitCategory {
             return convertFromImperial(value, unit: unit)
         } else if scientific.contains(unit) {
             return convertFromScientific(value, unit: unit)
-        } else if nautical.contains(unit) {
-            return convertFromNautical(value, unit: unit)
         }
         return [:]
     }
 
-    // MARK: - Conversion Helpers
+    // MARK: - Conversion Helpers (base = lux)
     private func convertFromMetric(_ value: Double, unit: String) -> [String:[String: Double]] {
-        let toLux: Double
-        switch unit {
-        case "Lux": toLux = value
-        default: toLux = value
-        }
-
+        let toLux = value
         var result = mergeMetricValues(toLux)
-        result.merge(mergeImperialValues(toLux)) { c,_ in c }
-        result.merge(mergeScientificValues(toLux)) { c,_ in c }
-        result.merge(mergeNauticalValues(toLux)) { c,_ in c }
+        result.merge(mergeImperialValues(toLux)) { c, _ in c }
+        result.merge(mergeScientificValues(toLux)) { c, _ in c }
         return result
     }
 
     private func convertFromImperial(_ value: Double, unit: String) -> [String:[String: Double]] {
         let toLux: Double
         switch unit {
-        case "FootCandle": toLux = value * 10.7639
+        case "FootCandle": toLux = value * 10.7639 // 1 fc = 1 lm/ft²
         default: toLux = value
         }
 
         var result = mergeImperialValues(toLux)
-        result.merge(mergeMetricValues(toLux)) { c,_ in c }
-        result.merge(mergeScientificValues(toLux)) { c,_ in c }
-        result.merge(mergeNauticalValues(toLux)) { c,_ in c }
+        result.merge(mergeMetricValues(toLux)) { c, _ in c }
+        result.merge(mergeScientificValues(toLux)) { c, _ in c }
         return result
     }
 
@@ -89,36 +70,21 @@ struct Illumination: UnitCategory {
         }
 
         var result = mergeScientificValues(toLux)
-        result.merge(mergeMetricValues(toLux)) { c,_ in c }
-        result.merge(mergeImperialValues(toLux)) { c,_ in c }
-        result.merge(mergeNauticalValues(toLux)) { c,_ in c }
+        result.merge(mergeMetricValues(toLux)) { c, _ in c }
+        result.merge(mergeImperialValues(toLux)) { c, _ in c }
         return result
-    }
-
-    private func convertFromNautical(_ value: Double, unit: String) -> [String:[String: Double]] {
-        return [:]
     }
 
     // MARK: - Merge Groups
     private func mergeMetricValues(_ value: Double) -> [String:[String: Double]] {
-        return ["Metric": [
-            "Lux": value
-        ]]
+        ["Metric": ["Lux": value]]
     }
 
     private func mergeImperialValues(_ value: Double) -> [String:[String: Double]] {
-        return ["Imperial": [
-            "FootCandle": value / 10.7639
-        ]]
+        ["Imperial": ["FootCandle": value / 10.7639]]
     }
 
     private func mergeScientificValues(_ value: Double) -> [String:[String: Double]] {
-        return ["Scientific": [
-            "Phot": value / 10000
-        ]]
-    }
-
-    private func mergeNauticalValues(_ value: Double) -> [String:[String: Double]] {
-        return [:]
+        ["Scientific": ["Phot": value / 10000]]
     }
 }

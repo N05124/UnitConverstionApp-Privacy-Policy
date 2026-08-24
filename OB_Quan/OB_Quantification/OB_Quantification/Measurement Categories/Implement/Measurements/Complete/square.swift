@@ -4,6 +4,8 @@
 //
 //  Created by Arison on 11/26/25.
 //
+//  Double helpers (`.squared`, `.cubed`). Not a UnitCategory — leave out of TabModel.
+//
 
 import Foundation
 extension Double {

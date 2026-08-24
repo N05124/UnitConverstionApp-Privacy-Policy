@@ -59,12 +59,12 @@ struct Force: UnitCategory {
         case "Hectonewton": toNewton = value * 100
         case "Kilonewton": toNewton = value * 1_000
         case "Meganewton": toNewton = value * 1_000_000
-        case "Giganewton": toNewton = value * 1_000_000_000
-        case "Teranewton": toNewton = value * 1_000_000_000_000
-        case "Petanewton": toNewton = value * 1_000_000_000_000_000
-        case "ExameterNewton": toNewton = value * 1_000_000_000_000_000_000
-        case "Zettanewton": toNewton = value * 1_000_000_000_000_000_000_000
-        case "Yottanewton": toNewton = value * 1_000_000_000_000_000_000_000_000
+        case "Giganewton": toNewton = value * 1e9
+        case "Teranewton": toNewton = value * 1e12
+        case "Petanewton": toNewton = value * 1e15
+        case "ExameterNewton": toNewton = value * 1e18
+        case "Zettanewton": toNewton = value * 1e21
+        case "Yottanewton": toNewton = value * 1e24
         default: toNewton = value
         }
 
@@ -78,9 +78,9 @@ struct Force: UnitCategory {
     private func convertFromImperial(_ value: Double, unit: String) -> [String:[String: Double]] {
         let toNewton: Double
         switch unit {
-        case "OunceForce": toNewton = value * 0.2780139
+        case "OunceForce": toNewton = value * (4.44822 / 16.0)
         case "PoundForce": toNewton = value * 4.44822
-        case "StoneForce": toNewton = value * 62.832
+        case "StoneForce": toNewton = value * (14.0 * 4.44822)
         case "TonForce": toNewton = value * 8_896.44
         case "Kip": toNewton = value * 4_448.22
         case "LongTonForce": toNewton = value * 9_964.02
@@ -117,7 +117,7 @@ struct Force: UnitCategory {
     private func convertFromNautical(_ value: Double, unit: String) -> [String:[String: Double]] {
         let toNewton: Double
         switch unit {
-        case "OunceForce": toNewton = value * 0.2780139
+        case "OunceForce": toNewton = value * (4.44822 / 16.0)
         case "PoundForce": toNewton = value * 4.44822
         case "LongTonForce": toNewton = value * 9_964.02
         default: toNewton = value
@@ -141,20 +141,20 @@ struct Force: UnitCategory {
             "Hectonewton": value / 100,
             "Kilonewton": value / 1_000,
             "Meganewton": value / 1_000_000,
-            "Giganewton": value / 1_000_000_000,
-            "Teranewton": value / 1_000_000_000_000,
-            "Petanewton": value / 1_000_000_000_000_000,
-            "ExameterNewton": value / 1_000_000_000_000_000_000,
-            "Zettanewton": value / 1_000_000_000_000_000_000_000,
-            "Yottanewton": value / 1_000_000_000_000_000_000_000_000
+            "Giganewton": value / 1e9,
+            "Teranewton": value / 1e12,
+            "Petanewton": value / 1e15,
+            "ExameterNewton": value / 1e18,
+            "Zettanewton": value / 1e21,
+            "Yottanewton": value / 1e24
         ]]
     }
 
     private func mergeImperialValues(_ value: Double) -> [String:[String: Double]] {
         return ["Imperial": [
-            "OunceForce": value / 0.2780139,
+            "OunceForce": value / (4.44822 / 16.0),
             "PoundForce": value / 4.44822,
-            "StoneForce": value / 62.832,
+            "StoneForce": value / (14.0 * 4.44822),
             "TonForce": value / 8_896.44,
             "Kip": value / 4_448.22,
             "LongTonForce": value / 9_964.02
@@ -175,7 +175,7 @@ struct Force: UnitCategory {
 
     private func mergeNauticalValues(_ value: Double) -> [String:[String: Double]] {
         return ["Nautical": [
-            "OunceForce": value / 0.2780139,
+            "OunceForce": value / (4.44822 / 16.0),
             "PoundForce": value / 4.44822,
             "LongTonForce": value / 9_964.02
         ]]

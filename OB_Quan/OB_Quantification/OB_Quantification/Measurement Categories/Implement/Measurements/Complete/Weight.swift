@@ -19,7 +19,7 @@ struct Weight: UnitCategory {
         "Microgram", "Milligram", "Gram", "Kilogram", "Megagram", "Gigagram"
     ]
     
-    let nautical: [String] = ["None"] // No typical nautical weight units
+    let nautical: [String] = [] // No typical nautical weight units
     
     // MARK: - Dynamic Conversion Logic
     func convertedValues(value: Double, from unit: String) -> [String:[String: Double]] {
