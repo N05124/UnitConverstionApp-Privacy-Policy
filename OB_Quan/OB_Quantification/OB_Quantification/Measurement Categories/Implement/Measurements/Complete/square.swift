@@ -2,11 +2,9 @@
 //  square.swift
 //  OB_Quantification
 //
-//  Shared Double helpers historically used by Area/Volume.
-//  Current Area.swift / Volume.swift no longer call `.squared` / `.cubed`
-//  (they use true area/volume bases), but this utility file is retained for
-//  compatibility and is intentionally NOT registered in TabModel — it is not
-//  a UnitCategory.
+//  Created by Arison on 11/26/25.
+//
+//  Double helpers (`.squared`, `.cubed`). Not a UnitCategory — leave out of TabModel.
 //
 
 import Foundation

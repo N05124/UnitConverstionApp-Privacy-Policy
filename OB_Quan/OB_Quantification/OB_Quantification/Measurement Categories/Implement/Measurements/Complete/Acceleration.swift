@@ -6,6 +6,14 @@
 //
 
 import Foundation
+//
+//  Acceleration.swift
+//  OB_Quantification
+//
+//  Created by Arison on 11/28/25.
+//
+
+import Foundation
 
 struct Acceleration: UnitCategory {
     var name: String
