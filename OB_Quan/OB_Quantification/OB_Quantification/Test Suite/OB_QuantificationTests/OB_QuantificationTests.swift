@@ -258,12 +258,139 @@ struct OB_QuantificationTests {
         expectNear(lookup(k, "Scientific", "Kelvin"), 6500.0)
     }
 
-    @Test func tabModelRegistersTwentyNineCategories() {
-        #expect(TabItem.tabs.count == 29)
+    @Test func tabModelRegistersSeventyCategories() {
+        #expect(TabItem.tabs.count == 70)
         let titles = TabItem.tabs.map(\.title)
         #expect(titles.contains("Length"))
         #expect(titles.contains("Time"))
         #expect(titles.contains("Perceptual"))
+        #expect(titles.contains("Temperature"))
+        #expect(titles.contains("Baud Rate"))
+        #expect(titles.contains("Growing Degree Days"))
         #expect(!titles.contains(where: { $0 == "square" || $0 == "Square" }))
+    }
+
+    // MARK: - Phase 4 flat-list quantities (33 new tabs)
+
+    @Test func temperatureAffineConversion() {
+        let cat = Temperature(name: "Celsius")
+        let out = cat.convertedValues(value: 0.0, from: "Celsius")
+        expectNear(lookup(out, "Metric", "Kelvin"), 273.15)
+        expectNear(lookup(out, "Imperial", "Fahrenheit"), 32.0)
+        let boiling = cat.convertedValues(value: 212.0, from: "Fahrenheit")
+        expectNear(lookup(boiling, "Metric", "Celsius"), 100.0)
+    }
+
+    @Test func fuelEconomyReciprocalConversion() {
+        let cat = FuelEconomy(name: "MilesPerGallonUS")
+        let out = cat.convertedValues(value: 25.0, from: "MilesPerGallonUS")
+        expectNear(lookup(out, "Metric", "LitersPer100Km"), 100.0 / (25.0 * 1.609344 / 3.785411784))
+        let fromMetric = cat.convertedValues(value: 8.0, from: "LitersPer100Km")
+        expectNear(lookup(fromMetric, "Imperial", "MilesPerGallonUS"), (100.0 / 8.0) * 3.785411784 / 1.609344)
+    }
+
+    @Test func threadPitchInverseConversion() {
+        let cat = ThreadPitch(name: "ThreadsPerInch")
+        let out = cat.convertedValues(value: 20.0, from: "ThreadsPerInch")
+        expectNear(lookup(out, "Metric", "MillimeterPitch"), 25.4 / 20.0)
+        let back = cat.convertedValues(value: 1.25, from: "MillimeterPitch")
+        expectNear(lookup(back, "Imperial", "ThreadsPerInch"), 25.4 / 1.25)
+    }
+
+    @Test func digitalStorageDecimalVsBinary() {
+        let cat = DigitalStorage(name: "Megabyte")
+        let dec = cat.convertedValues(value: 1.0, from: "Megabyte")
+        expectNear(lookup(dec, "Metric", "Byte"), 1e6)
+        expectNear(lookup(dec, "Imperial", "Mebibyte"), 1e6 / (1024.0 * 1024.0))
+        let bin = cat.convertedValues(value: 1.0, from: "Mebibyte")
+        expectNear(lookup(bin, "Metric", "Byte"), 1024.0 * 1024.0)
+    }
+
+    @Test func radioactivityAndRadiationUnits() {
+        let cat = Radioactivity(name: "Becquerel")
+        let out = cat.convertedValues(value: 1.0, from: "Curie")
+        expectNear(lookup(out, "Metric", "Becquerel"), 3.7e10)
+        let dose = AbsorbedDose(name: "Gray")
+        let rad = dose.convertedValues(value: 100.0, from: "Rad")
+        expectNear(lookup(rad, "Metric", "Gray"), 1.0)
+        let sv = EquivalentDose(name: "Sievert")
+        let rem = sv.convertedValues(value: 1.0, from: "Rem")
+        expectNear(lookup(rem, "Metric", "Sievert"), 0.01)
+        let exp = Exposure(name: "Roentgen")
+        let roentgen = exp.convertedValues(value: 1.0, from: "Roentgen")
+        expectNear(lookup(roentgen, "Metric", "CoulombPerKilogram"), 2.58e-4)
+    }
+
+    @Test func informationEntropyLogConversion() {
+        let cat = InformationEntropy(name: "Bit")
+        let out = cat.convertedValues(value: 1.0, from: "Bit")
+        expectNear(lookup(out, "Metric", "Shannon"), 1.0)
+        expectNear(lookup(out, "Scientific", "Nat"), 1.0 / log2(M_E))
+        let back = cat.convertedValues(value: 1.0 / log2(M_E), from: "Nat")
+        expectNear(lookup(back, "Metric", "Bit"), 1.0)
+    }
+
+    @Test func concentrationWaterAssumption() {
+        let cat = Concentration(name: "PartsPerMillion")
+        let out = cat.convertedValues(value: 10.0, from: "PartsPerMillion")
+        expectNear(lookup(out, "Metric", "MilligramPerLiter"), 10.0)
+        expectNear(lookup(out, "Metric", "PartsPerBillion"), 10000.0)
+    }
+
+    // MARK: - Niche-creator quantities (8)
+
+    @Test func metabolicRateEnergyConsistent() {
+        let cat = MetabolicRate(name: "CaloriesPerMinute")
+        let out = cat.convertedValues(value: 1.0, from: "CaloriesPerMinute")
+        expectNear(lookup(out, "Metric", "CaloriesPerHour"), 60.0)
+        expectNear(lookup(out, "Metric", "KilojoulesPerMinute"), 4.184)
+        expectNear(lookup(out, "Metric", "KilojoulesPerHour"), 60.0 * 4.184)
+    }
+
+    @Test func lumberVolumeBoardFootToCubicFoot() {
+        let cat = LumberVolume(name: "BoardFoot")
+        let out = cat.convertedValues(value: 12.0, from: "BoardFoot")
+        expectNear(lookup(out, "Imperial", "CubicFoot"), 1.0, "12 bd-ft = 1 ft³")
+        expectNear(lookup(out, "Metric", "CubicMeter"), 12.0 * 0.0023597372)
+    }
+
+    @Test func materialCoverageDerivation() {
+        let cat = MaterialCoverage(name: "SquareMeterPerLiter")
+        let out = cat.convertedValues(value: 1.0, from: "SquareFeetPerGallon")
+        expectNear(lookup(out, "Metric", "SquareMeterPerLiter"), 0.024543)
+    }
+
+    @Test func engineDisplacementLiterCcInch() {
+        let cat = EngineDisplacement(name: "Liter")
+        let out = cat.convertedValues(value: 1.0, from: "Liter")
+        expectNear(lookup(out, "Metric", "CubicCentimeter"), 1000.0)
+        expectNear(lookup(out, "Imperial", "CubicInch"), 1.0 / 0.0163871)
+        let inch = cat.convertedValues(value: 1.0, from: "CubicInch")
+        expectNear(lookup(inch, "Metric", "Liter"), 0.0163871)
+    }
+
+    @Test func growingDegreeDaysScaleOnlyNoOffset() {
+        let cat = GrowingDegreeDays(name: "GrowingDegreeDayCelsius")
+        let out = cat.convertedValues(value: 10.0, from: "GrowingDegreeDayCelsius")
+        expectNear(lookup(out, "Imperial", "GrowingDegreeDayFahrenheit"), 18.0, "×1.8 only")
+        // Must NOT be 10×1.8+32 = 50 (absolute temperature mistake)
+        #expect(abs(lookup(out, "Imperial", "GrowingDegreeDayFahrenheit") - 50.0) > 1.0)
+        let back = cat.convertedValues(value: 18.0, from: "GrowingDegreeDayFahrenheit")
+        expectNear(lookup(back, "Metric", "GrowingDegreeDayCelsius"), 10.0)
+    }
+
+    @Test func singleUnitNicheCategoriesRoundTrip() {
+        expectNear(
+            lookup(HeartRate(name: "BeatsPerMinute").convertedValues(value: 72, from: "BeatsPerMinute"), "Metric", "BeatsPerMinute"),
+            72
+        )
+        expectNear(
+            lookup(VO2Max(name: "MillilitersPerKilogramPerMinute").convertedValues(value: 45, from: "MillilitersPerKilogramPerMinute"), "Metric", "MillilitersPerKilogramPerMinute"),
+            45
+        )
+        expectNear(
+            lookup(ImageResolution(name: "Megapixel").convertedValues(value: 12.1, from: "Megapixel"), "Metric", "Megapixel"),
+            12.1
+        )
     }
 }
