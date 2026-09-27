@@ -76,5 +76,87 @@ struct TabItem: Identifiable{
         TabItem(id: UUID(), title: "Biological", systemImage: "heart", currentPage: "Biological", status: "In Progress", isExportable: true, category: Biological(name: "BeatsPerMinute")),
 //        Perceptual
         TabItem(id: UUID(), title: "Perceptual", systemImage: "eye", currentPage: "Perceptual", status: "In Progress", isExportable: true, category: Perceptual(name: "BitPerSecond")),
+//        Temperature
+        TabItem(id: UUID(), title: "Temperature", systemImage: "thermometer.medium", currentPage: "Temperature", status: "Active", isExportable: true, category: Temperature(name: "Celsius")),
+//        DigitalStorage
+        TabItem(id: UUID(), title: "Digital Storage", systemImage: "internaldrive", currentPage: "Digital Storage", status: "Active", isExportable: true, category: DigitalStorage(name: "Byte")),
+//        DataTransferRate
+        TabItem(id: UUID(), title: "Data Transfer Rate", systemImage: "arrow.up.arrow.down.circle", currentPage: "Data Transfer Rate", status: "Active", isExportable: true, category: DataTransferRate(name: "MegabitPerSecond")),
+//        FuelEconomy
+        TabItem(id: UUID(), title: "Fuel Economy", systemImage: "fuelpump", currentPage: "Fuel Economy", status: "Active", isExportable: true, category: FuelEconomy(name: "MilesPerGallonUS")),
+//        ScreenResolution
+        TabItem(id: UUID(), title: "Screen Resolution", systemImage: "display", currentPage: "Screen Resolution", status: "Active", isExportable: true, category: ScreenResolution(name: "PixelsPerInch")),
+//        ThreadPitch
+        TabItem(id: UUID(), title: "Thread Pitch", systemImage: "screwdriver", currentPage: "Thread Pitch", status: "Active", isExportable: true, category: ThreadPitch(name: "ThreadsPerInch")),
+//        PrecisionLength
+        TabItem(id: UUID(), title: "Precision Length", systemImage: "ruler.fill", currentPage: "Precision Length", status: "Active", isExportable: true, category: PrecisionLength(name: "Micron")),
+//        CuttingSpeed
+        TabItem(id: UUID(), title: "Cutting Speed", systemImage: "gearshape.2", currentPage: "Cutting Speed", status: "Active", isExportable: true, category: CuttingSpeed(name: "SurfaceFeetPerMinute")),
+//        FeedRate
+        TabItem(id: UUID(), title: "Feed Rate", systemImage: "arrow.right.to.line", currentPage: "Feed Rate", status: "Active", isExportable: true, category: FeedRate(name: "InchPerMinute")),
+//        RotationalSpeed
+        TabItem(id: UUID(), title: "Rotational Speed", systemImage: "rotate.3d", currentPage: "Rotational Speed", status: "Active", isExportable: true, category: RotationalSpeed(name: "RPM")),
+//        SurfaceRoughness
+        TabItem(id: UUID(), title: "Surface Roughness", systemImage: "waveform", currentPage: "Surface Roughness", status: "Active", isExportable: true, category: SurfaceRoughness(name: "MicrometerRa")),
+//        MomentOfInertia
+        TabItem(id: UUID(), title: "Moment Of Inertia", systemImage: "circle.dashed", currentPage: "Moment Of Inertia", status: "Active", isExportable: true, category: MomentOfInertia(name: "KilogramMeterSquared")),
+//        LuminousFlux
+        TabItem(id: UUID(), title: "Luminous Flux", systemImage: "lightbulb", currentPage: "Luminous Flux", status: "Active", isExportable: true, category: LuminousFlux(name: "Lumen")),
+//        LuminousIntensity
+        TabItem(id: UUID(), title: "Luminous Intensity", systemImage: "light.max", currentPage: "Luminous Intensity", status: "Active", isExportable: true, category: LuminousIntensity(name: "Candela")),
+//        RadiantIntensity
+        TabItem(id: UUID(), title: "Radiant Intensity", systemImage: "sun.max.fill", currentPage: "Radiant Intensity", status: "Active", isExportable: true, category: RadiantIntensity(name: "WattPerSteradian")),
+//        Luminance
+        TabItem(id: UUID(), title: "Luminance", systemImage: "light.beacon.max", currentPage: "Luminance", status: "Active", isExportable: true, category: Luminance(name: "CandelaPerSquareMeter")),
+//        DynamicViscosity
+        TabItem(id: UUID(), title: "Dynamic Viscosity", systemImage: "drop.degreesign", currentPage: "Dynamic Viscosity", status: "Active", isExportable: true, category: DynamicViscosity(name: "PascalSecond")),
+//        KinematicViscosity
+        TabItem(id: UUID(), title: "Kinematic Viscosity", systemImage: "drop.triangle", currentPage: "Kinematic Viscosity", status: "Active", isExportable: true, category: KinematicViscosity(name: "Centistokes")),
+//        VolumetricFlowRate
+        TabItem(id: UUID(), title: "Volumetric Flow Rate", systemImage: "arrow.triangle.branch", currentPage: "Volumetric Flow Rate", status: "Active", isExportable: true, category: VolumetricFlowRate(name: "LiterPerMinute")),
+//        MassFlowRate
+        TabItem(id: UUID(), title: "Mass Flow Rate", systemImage: "arrow.down.circle", currentPage: "Mass Flow Rate", status: "Active", isExportable: true, category: MassFlowRate(name: "KilogramPerSecond")),
+//        Radioactivity
+        TabItem(id: UUID(), title: "Radioactivity", systemImage: "radiation", currentPage: "Radioactivity", status: "Active", isExportable: true, category: Radioactivity(name: "Becquerel")),
+//        AbsorbedDose
+        TabItem(id: UUID(), title: "Absorbed Dose", systemImage: "cross.case", currentPage: "Absorbed Dose", status: "Active", isExportable: true, category: AbsorbedDose(name: "Gray")),
+//        EquivalentDose
+        TabItem(id: UUID(), title: "Equivalent Dose", systemImage: "shield.lefthalf.filled", currentPage: "Equivalent Dose", status: "Active", isExportable: true, category: EquivalentDose(name: "Sievert")),
+//        Exposure
+        TabItem(id: UUID(), title: "Exposure", systemImage: "rays", currentPage: "Exposure", status: "Active", isExportable: true, category: Exposure(name: "Roentgen")),
+//        Momentum
+        TabItem(id: UUID(), title: "Momentum", systemImage: "arrow.left.and.right", currentPage: "Momentum", status: "Active", isExportable: true, category: Momentum(name: "KilogramMeterPerSecond")),
+//        AngularMomentum
+        TabItem(id: UUID(), title: "Angular Momentum", systemImage: "arrow.triangle.2.circlepath", currentPage: "Angular Momentum", status: "Active", isExportable: true, category: AngularMomentum(name: "KilogramMeterSquaredPerSecond")),
+//        Jerk
+        TabItem(id: UUID(), title: "Jerk", systemImage: "chart.line.uptrend.xyaxis", currentPage: "Jerk", status: "Active", isExportable: true, category: Jerk(name: "MeterPerSecondCubed")),
+//        Impulse
+        TabItem(id: UUID(), title: "Impulse", systemImage: "arrow.up.left.and.arrow.down.right", currentPage: "Impulse", status: "Active", isExportable: true, category: Impulse(name: "NewtonSecond")),
+//        Concentration
+        TabItem(id: UUID(), title: "Concentration", systemImage: "flask", currentPage: "Concentration", status: "Active", isExportable: true, category: Concentration(name: "PartsPerMillion")),
+//        MolarMass
+        TabItem(id: UUID(), title: "Molar Mass", systemImage: "atom", currentPage: "Molar Mass", status: "Active", isExportable: true, category: MolarMass(name: "GramPerMole")),
+//        Molality
+        TabItem(id: UUID(), title: "Molality", systemImage: "drop.halffull", currentPage: "Molality", status: "Active", isExportable: true, category: Molality(name: "MolePerKilogram")),
+//        InformationEntropy
+        TabItem(id: UUID(), title: "Information Entropy", systemImage: "info.circle", currentPage: "Information Entropy", status: "Active", isExportable: true, category: InformationEntropy(name: "Bit")),
+//        BaudRate
+        TabItem(id: UUID(), title: "Baud Rate", systemImage: "antenna.radiowaves.left.and.right", currentPage: "Baud Rate", status: "Active", isExportable: true, category: BaudRate(name: "Baud")),
+//        HeartRate
+        TabItem(id: UUID(), title: "Heart Rate", systemImage: "heart.fill", currentPage: "Heart Rate", status: "Active", isExportable: true, category: HeartRate(name: "BeatsPerMinute")),
+//        MetabolicRate
+        TabItem(id: UUID(), title: "Metabolic Rate", systemImage: "flame", currentPage: "Metabolic Rate", status: "Active", isExportable: true, category: MetabolicRate(name: "CaloriesPerMinute")),
+//        VO2Max
+        TabItem(id: UUID(), title: "VO2 Max", systemImage: "lungs", currentPage: "VO2 Max", status: "Active", isExportable: true, category: VO2Max(name: "MillilitersPerKilogramPerMinute")),
+//        LumberVolume
+        TabItem(id: UUID(), title: "Lumber Volume", systemImage: "square.stack.3d.up", currentPage: "Lumber Volume", status: "Active", isExportable: true, category: LumberVolume(name: "BoardFoot")),
+//        MaterialCoverage
+        TabItem(id: UUID(), title: "Material Coverage", systemImage: "paintbrush", currentPage: "Material Coverage", status: "Active", isExportable: true, category: MaterialCoverage(name: "SquareMeterPerLiter")),
+//        EngineDisplacement
+        TabItem(id: UUID(), title: "Engine Displacement", systemImage: "engine.combustion", currentPage: "Engine Displacement", status: "Active", isExportable: true, category: EngineDisplacement(name: "Liter")),
+//        ImageResolution
+        TabItem(id: UUID(), title: "Image Resolution", systemImage: "camera", currentPage: "Image Resolution", status: "Active", isExportable: true, category: ImageResolution(name: "Megapixel")),
+//        GrowingDegreeDays
+        TabItem(id: UUID(), title: "Growing Degree Days", systemImage: "leaf", currentPage: "Growing Degree Days", status: "Active", isExportable: true, category: GrowingDegreeDays(name: "GrowingDegreeDayCelsius")),
     ]
 }
