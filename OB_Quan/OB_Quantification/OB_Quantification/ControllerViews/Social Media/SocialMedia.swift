@@ -27,14 +27,15 @@ struct SocialMedia: View{
                 Divider()
                 VStack{
                     Spacer()
+                    //implement test, if url not reachable - post customer service unavailable.
                     Button {
-                        if let url = URL(string: "https://www.instagram.com/threaded_realm/") {
+                        if let url = URL(string: "https://www.instagram.com/com.threaded.realm/") {
                             UIApplication.shared.open(url)
                         }
                     } label: {
                         InstagramGradientIcon()
                     }
-                    Text("@Threaded_Realms")
+                    Text("@com.threaded.realm")
                     Spacer()
                     Button {
                         if let url = URL(string: "https://x.com/ThreadedRealms") {
